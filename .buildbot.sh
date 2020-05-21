@@ -23,7 +23,8 @@ cargo install cargo-script
 ulimit -d $((1024 * 1024 * 8)) # 8 GiB
 
 # Build rustc_boehm
-/usr/bin/time -v ./x.py install --config .buildbot.config.toml
+git clone https://github.com/softdevteam/rustc_boehm
+cd rustc_boehm && ./x.py install --config .buildbot.config.toml
 
 # Run the benchmarks. For now, simply running them successfully is enough to
 # pass the CI checks.
