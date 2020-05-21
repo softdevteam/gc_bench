@@ -9,12 +9,14 @@ export RUSTUP_HOME="`pwd`/.rustup"
 
 # Install Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > rustup.sh
-sh rustup.sh --default-host x86_64-unknown-linux-gnu --default-toolchain nightly -y --no-modify-path
+sh rustup.sh --default-host x86_64-unknown-linux-gnu --default-toolchain stable -y --no-modify-path
 export PATH=`pwd`/.cargo/bin/:$PATH
 
 # Rustfmt checks
 rustup component add --toolchain nightly rustfmt-preview || cargo +nightly install --force rustfmt-nightly
 cargo +nightly fmt --all -- --check
+
+cargo install cargo-script
 
 # Ensure the building rustc_boehm fails if it uses excessive amounts of memory.
 ulimit -d $((1024 * 1024 * 8)) # 8 GiB
