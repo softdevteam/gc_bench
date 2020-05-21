@@ -1,0 +1,16 @@
+# Config file for continuous integration.
+
+[rust]
+codegen-units = 0           # Use many compilation units.
+debug-assertions = true     # Turn on assertions in rustc.
+
+[build]
+docs = false
+extended = false
+
+[llvm]
+assertions = true           # Turn on assertions in LLVM.
+
+[install]
+prefix = "build/rustc_boehm"
+sysconfdir = "etc"
