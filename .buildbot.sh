@@ -13,9 +13,10 @@ sh rustup.sh --default-host x86_64-unknown-linux-gnu --default-toolchain stable 
 export PATH=`pwd`/.cargo/bin/:$PATH
 
 # Rustfmt checks
-rustup component add --toolchain nightly rustfmt-preview || cargo +nightly install --force rustfmt-nightly
-cargo +nightly fmt --all -- --check
+rustup component add rustfmt
+cargo fmt --all -- --check
 
+# needed to build benchmarks
 cargo install cargo-script
 
 # Ensure the building rustc_boehm fails if it uses excessive amounts of memory.
