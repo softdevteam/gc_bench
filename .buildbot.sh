@@ -24,9 +24,9 @@ ulimit -d $((1024 * 1024 * 8)) # 8 GiB
 
 # Build rustc_boehm
 git clone https://github.com/softdevteam/rustc_boehm
-cd rustc_boehm && ./x.py install --config .buildbot.config.toml
+cd rustc_boehm && ./x.py install --config ../.buildbot.config.toml
 
 # Run the benchmarks. For now, simply running them successfully is enough to
 # pass the CI checks.
-RUSTC_BOEHM=build/rustc_boehm/bin/rustc cargo run --release
+RUSTC_BOEHM=rustc_boehm/build/rustc_boehm/bin/rustc cargo run --release
 
