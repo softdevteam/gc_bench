@@ -26,9 +26,6 @@ fi
 # needed to build benchmarks
 cargo install cargo-script
 
-# Ensure the building rustc_boehm fails if it uses excessive amounts of memory.
-ulimit -d $((1024 * 1024 * 8)) # 8 GiB
-
 # Build rustc_boehm
 git clone https://github.com/softdevteam/rustc_boehm
 mkdir -p rustc_boehm/build/rustc_boehm
