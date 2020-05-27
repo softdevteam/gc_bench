@@ -37,7 +37,7 @@ fn compile(benchmark: &Path) {
 
     Command::new("mv")
         .args(&[bin, target])
-        .spawn()
+        .output()
         .expect("Couldn't move bin");
 }
 
@@ -45,4 +45,9 @@ fn main() {
     for bm in read_dir("benchmarks/").unwrap() {
         compile(bm.unwrap().path().as_path());
     }
+
+    Command::new("cargo")
+        .args(&["script", "--clear-cache"])
+        .output()
+        .expect("Couldn't clear cargo script cache");
 }
