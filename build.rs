@@ -12,6 +12,7 @@ fn compile(benchmark: &Path) {
         Command::new("cargo")
             .args(&["script", benchmark.to_str().unwrap(), "--build-only"])
             .env("RUSTC", rustc.as_str())
+            .env("RUSTFLAGS", "-Zgc-destination-propagation=yes")
             .output()
             .expect(format!("Failed to compile benchmark: {}", stem).as_str());
     } else if stem.starts_with("bench_rboehm") {
